@@ -13,7 +13,7 @@ from firebase import firebase
 
 config = {
   # You can get all these info from the firebase website. It's associated with your account.
-  "apiKey": "AIzaSyADldspq2oeqF0tZH2ACoDAV9YhGkHMCHU",
+  "apiKey": "",
   "authDomain": "smartfeeder-b0546.firebaseapp.com",
   "databaseURL": "https://smartfeeder-b0546-default-rtdb.firebaseio.com/",
   "project_id": "smartfeeder-b0546",
