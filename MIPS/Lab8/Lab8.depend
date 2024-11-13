@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1712698680 source:e:\ceng356\lab8\code\lab7.c
+	"header.h"
+	"memory.c"
+
+1680536558 e:\ceng356\lab8\code\header.h
+	<string.h>
+	<assert.h>
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	<sys/param.h>
+	<stdbool.h>
+	<ctype.h>
+
+1712038766 e:\ceng356\lab8\code\memory.c
+	"header.h"
+
+1712702684 source:e:\ceng356\lab8\code\main.c
+	"header.h"
+
+1712038766 source:e:\ceng356\lab8\code\memory.c
+	"header.h"
+
+1675998722 source:e:\ceng356\lab8\code\parser.c
+	"header.h"
+	"parser.h"
+
+1675998896 e:\ceng356\lab8\code\parser.h
+	<string.h>
+
