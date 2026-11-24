@@ -1,0 +1,52 @@
+[
+  {
+    "name": "half-adder",
+    "title": "Half adder",
+    "description": "S = A XOR B, C = A AND B. Two gates, one gate delay."
+  },
+  {
+    "name": "full-adder",
+    "title": "Full adder (from half-adder chips)",
+    "description": "Two half-adder chips and an OR gate. Cin -> Cout takes 2 gate delays."
+  },
+  {
+    "name": "4-bit-adder",
+    "title": "4-bit ripple-carry adder",
+    "description": "4-bit ripple-carry adder from full-adder chips (which contain half-adder chips). The carry ripples through every stage, 2 gate delays each."
+  },
+  {
+    "name": "sr-latch",
+    "title": "SR latch (NOR)",
+    "description": "Cross-coupled NOR latch. S sets Q, R resets it, both low holds. Releasing S and R together from 1/1 is a race: the latch oscillates in the unit-delay model."
+  },
+  {
+    "name": "d-flip-flop",
+    "title": "D flip-flop (master-slave, gates)",
+    "description": "Master-slave positive-edge D flip-flop from NAND gates: the master latch is open while CLK is low, the slave while CLK is high, so Q only takes D on a rising edge."
+  },
+  {
+    "name": "4-bit-counter",
+    "title": "4-bit counter + 7-segment",
+    "description": "Synchronous 4-bit counter: bit i toggles when all lower bits are 1 (D = Q xor carry). Hold RST to clear it. The 7-segment display shows the count in hex."
+  },
+  {
+    "name": "2-to-4-decoder",
+    "title": "2-to-4 decoder",
+    "description": "Exactly one output goes high: the one selected by A1 A0, while EN is high."
+  },
+  {
+    "name": "4-to-1-mux",
+    "title": "4:1 multiplexer",
+    "description": "Y = D[S1 S0]: four AND-terms selected by the address lines, OR-ed together."
+  },
+  {
+    "name": "traffic-light",
+    "title": "Traffic-light state machine",
+    "description": "Moore state machine on two D flip-flops: GREEN (00) -> AMBER (01) -> RED (10) -> GREEN. It only leaves green while REQ is high."
+  },
+  {
+    "name": "ring-oscillator",
+    "title": "Ring oscillator (unstable)",
+    "description": "A NAND and four inverters in a loop: five inversions, so no stable state. Flip EN to 1 and the instability detector reports the loop and its period (2 x 5 = 10 ticks)."
+  }
+]

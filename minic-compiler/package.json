@@ -1,0 +1,20 @@
+{
+  "name": "minic-compiler",
+  "version": "1.0.0",
+  "description": "A compiler for Mini-C, a small C-like language, that emits MIPS assembly for my MIPS emulator. Plain JavaScript, no dependencies.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Aaron Morris Jara",
+  "main": "src/index.js",
+  "bin": {
+    "minic": "cli.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "bench": "node bench.js",
+    "fib": "node cli.js examples/fibonacci.mc --run"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

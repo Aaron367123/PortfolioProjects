@@ -1,0 +1,221 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "d-flip-flop",
+  "description": "Master-slave positive-edge D flip-flop from NAND gates: the master latch is open while CLK is low, the slave while CLK is high, so Q only takes D on a rising edge.",
+  "components": [
+    {
+      "id": "D",
+      "type": "INPUT",
+      "x": 40,
+      "y": 80,
+      "label": "D",
+      "props": {
+        "value": 1
+      }
+    },
+    {
+      "id": "CLK",
+      "type": "CLOCK",
+      "x": 40,
+      "y": 320,
+      "label": "CLK",
+      "props": {
+        "period": 16
+      }
+    },
+    {
+      "id": "nd",
+      "type": "NOT",
+      "x": 160,
+      "y": 160
+    },
+    {
+      "id": "nclk",
+      "type": "NOT",
+      "x": 160,
+      "y": 320
+    },
+    {
+      "id": "m1",
+      "type": "NAND",
+      "x": 300,
+      "y": 80
+    },
+    {
+      "id": "m2",
+      "type": "NAND",
+      "x": 300,
+      "y": 200
+    },
+    {
+      "id": "mq",
+      "type": "NAND",
+      "x": 440,
+      "y": 100
+    },
+    {
+      "id": "mqn",
+      "type": "NAND",
+      "x": 440,
+      "y": 200
+    },
+    {
+      "id": "s1",
+      "type": "NAND",
+      "x": 640,
+      "y": 100
+    },
+    {
+      "id": "s2",
+      "type": "NAND",
+      "x": 640,
+      "y": 200
+    },
+    {
+      "id": "q",
+      "type": "NAND",
+      "x": 780,
+      "y": 100
+    },
+    {
+      "id": "qn",
+      "type": "NAND",
+      "x": 780,
+      "y": 200
+    },
+    {
+      "id": "probe1",
+      "type": "PROBE",
+      "x": 600,
+      "y": 40,
+      "label": "MASTER"
+    },
+    {
+      "id": "Q",
+      "type": "OUTPUT",
+      "x": 960,
+      "y": 120,
+      "label": "Q"
+    },
+    {
+      "id": "QN",
+      "type": "OUTPUT",
+      "x": 960,
+      "y": 220,
+      "label": "QN"
+    }
+  ],
+  "wires": [
+    {
+      "from": "D.out",
+      "to": "m1.in0"
+    },
+    {
+      "from": "D.out",
+      "to": "nd.in"
+    },
+    {
+      "from": "nd.out",
+      "to": "m2.in0"
+    },
+    {
+      "from": "CLK.out",
+      "to": "nclk.in"
+    },
+    {
+      "from": "nclk.out",
+      "to": "m1.in1"
+    },
+    {
+      "from": "nclk.out",
+      "to": "m2.in1"
+    },
+    {
+      "from": "m1.out",
+      "to": "mq.in0"
+    },
+    {
+      "from": "m2.out",
+      "to": "mqn.in1"
+    },
+    {
+      "from": "mq.out",
+      "to": "mqn.in0",
+      "route": {
+        "y": 160,
+        "x1": 540,
+        "x2": 420
+      }
+    },
+    {
+      "from": "mqn.out",
+      "to": "mq.in1",
+      "route": {
+        "y": 180,
+        "x1": 560,
+        "x2": 400
+      }
+    },
+    {
+      "from": "mq.out",
+      "to": "s1.in0"
+    },
+    {
+      "from": "mqn.out",
+      "to": "s2.in0"
+    },
+    {
+      "from": "CLK.out",
+      "to": "s1.in1",
+      "route": {
+        "x": 600
+      }
+    },
+    {
+      "from": "CLK.out",
+      "to": "s2.in1",
+      "route": {
+        "x": 600
+      }
+    },
+    {
+      "from": "s1.out",
+      "to": "q.in0"
+    },
+    {
+      "from": "s2.out",
+      "to": "qn.in1"
+    },
+    {
+      "from": "q.out",
+      "to": "qn.in0",
+      "route": {
+        "y": 160,
+        "x1": 880,
+        "x2": 760
+      }
+    },
+    {
+      "from": "qn.out",
+      "to": "q.in1",
+      "route": {
+        "y": 180,
+        "x1": 900,
+        "x2": 740
+      }
+    },
+    {
+      "from": "mq.out",
+      "to": "probe1.in"
+    },
+    {
+      "from": "q.out",
+      "to": "Q.in"
+    },
+    {
+      "from": "qn.out",
+      "to": "QN.in"
+    }
+  ]
+}

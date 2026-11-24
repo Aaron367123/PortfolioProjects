@@ -1,0 +1,17 @@
+{
+  "name": "logic-sim",
+  "version": "1.0.0",
+  "description": "Event-driven digital logic simulator (unit gate delay, 0/1/X logic, subcircuits) with a browser editor.",
+  "type": "module",
+  "main": "src/index.js",
+  "license": "MIT",
+  "author": "Aaron Morris Jara",
+  "scripts": {
+    "test": "node --test",
+    "examples": "node scripts/build-examples.js",
+    "sync-demo": "node scripts/sync-demo.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

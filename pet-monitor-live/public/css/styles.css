@@ -1,18 +1,18 @@
 /* Pet Monitor Live - dashboard styles. Theme tokens first; components below. */
 
 :root {
-  --bg: #0b0f1a;
-  --surface: #141a2e;
-  --surface-2: #1a2138;
-  --border: rgba(255, 255, 255, 0.08);
-  --text: #e8ebf5;
-  --muted: #9aa3bd;
-  --accent: #7c5cff;
-  --accent-2: #22d3ee;
-  --warn: #facc15;
-  --danger: #f87171;
-  --ok: #22c55e;
-  --info: #60a5fa;
+  --bg: #07110c;
+  --surface: #0e1d16;
+  --surface-2: #13261d;
+  --border: rgba(196, 228, 208, 0.10);
+  --text: #e8f0ea;
+  --muted: #9fb5a8;
+  --accent: #e0a458;
+  --accent-2: #4fd1c5;
+  --warn: #ffcc66;
+  --danger: #ff6b5e;
+  --ok: #3ee08f;
+  --info: #4fd1c5;
   --grid: rgba(255, 255, 255, 0.06);
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   --radius: 14px;
@@ -21,39 +21,39 @@
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #f5f7fb;
-    --surface: #ffffff;
-    --surface-2: #eef1f8;
-    --border: rgba(15, 23, 42, 0.1);
-    --text: #0f172a;
-    --muted: #5b6478;
-    --accent: #6a4cf0;
-    --accent-2: #0891b2;
-    --warn: #b45309;
+    --bg: #f4f1e8;
+    --surface: #fffdf6;
+    --surface-2: #f0ebdc;
+    --border: rgba(20, 35, 27, 0.1);
+    --text: #14231b;
+    --muted: #4d5f55;
+    --accent: #b06a26;
+    --accent-2: #0f7f75;
+    --warn: #9a6a00;
     --danger: #dc2626;
-    --ok: #16a34a;
-    --info: #2563eb;
-    --grid: rgba(15, 23, 42, 0.07);
-    --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --ok: #138a4b;
+    --info: #0f7f75;
+    --grid: rgba(20, 35, 27, 0.07);
+    --shadow: 0 8px 24px rgba(20, 35, 27, 0.08);
     color-scheme: light;
   }
 }
 
 :root[data-theme="light"] {
-  --bg: #f5f7fb;
-  --surface: #ffffff;
-  --surface-2: #eef1f8;
-  --border: rgba(15, 23, 42, 0.1);
-  --text: #0f172a;
-  --muted: #5b6478;
-  --accent: #6a4cf0;
-  --accent-2: #0891b2;
-  --warn: #b45309;
+  --bg: #f4f1e8;
+  --surface: #fffdf6;
+  --surface-2: #f0ebdc;
+  --border: rgba(20, 35, 27, 0.1);
+  --text: #14231b;
+  --muted: #4d5f55;
+  --accent: #b06a26;
+  --accent-2: #0f7f75;
+  --warn: #9a6a00;
   --danger: #dc2626;
-  --ok: #16a34a;
-  --info: #2563eb;
-  --grid: rgba(15, 23, 42, 0.07);
-  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --ok: #138a4b;
+  --info: #0f7f75;
+  --grid: rgba(20, 35, 27, 0.07);
+  --shadow: 0 8px 24px rgba(20, 35, 27, 0.08);
   color-scheme: light;
 }
 

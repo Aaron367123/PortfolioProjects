@@ -1,0 +1,86 @@
+{
+ "format": "nnfs-model",
+ "version": 1,
+ "weights": "f32",
+ "inputSize": 784,
+ "outputSize": 10,
+ "params": 235146,
+ "bytes": 940584,
+ "layers": [
+  {
+   "type": "dense",
+   "in": 784,
+   "out": 256,
+   "inputNorm": {
+    "mean": 0.130657,
+    "std": 0.308093
+   },
+   "W": {
+    "offset": 0,
+    "length": 200704,
+    "dtype": "f32"
+   },
+   "b": {
+    "offset": 802816,
+    "length": 256,
+    "dtype": "f32"
+   }
+  },
+  {
+   "type": "relu"
+  },
+  {
+   "type": "dropout",
+   "p": 0.2
+  },
+  {
+   "type": "dense",
+   "in": 256,
+   "out": 128,
+   "W": {
+    "offset": 803840,
+    "length": 32768,
+    "dtype": "f32"
+   },
+   "b": {
+    "offset": 934912,
+    "length": 128,
+    "dtype": "f32"
+   }
+  },
+  {
+   "type": "relu"
+  },
+  {
+   "type": "dropout",
+   "p": 0.2
+  },
+  {
+   "type": "dense",
+   "in": 128,
+   "out": 10,
+   "W": {
+    "offset": 935424,
+    "length": 1280,
+    "dtype": "f32"
+   },
+   "b": {
+    "offset": 940544,
+    "length": 10,
+    "dtype": "f32"
+   }
+  }
+ ],
+ "meta": {
+  "testAccuracy": 98.86,
+  "testAccuracyInt8": 98.86,
+  "testAccuracyF16": 98.86,
+  "params": 235146,
+  "architecture": "784-256-128-10",
+  "modelBytesInt8": 237904,
+  "modelBytesF32": 940584,
+  "inferenceMs": 0.1117,
+  "bin": "model-f32.bin",
+  "trainedAt": "2026-11-24T14:38:35.886Z"
+ }
+}

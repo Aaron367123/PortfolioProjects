@@ -1,0 +1,16 @@
+{
+  "name": "pid-control-lab",
+  "version": "1.0.0",
+  "description": "PID control lab: browser simulator with physical plants, relay autotune and an embedded C99 PID library with JS/C parity tests.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Aaron Morris Jara",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "golden": "node scripts/gen-golden.mjs",
+    "figures": "node scripts/export-figure-data.mjs && python -E -P scripts/make_figures.py",
+    "metrics": "node scripts/metrics-table.mjs",
+    "sync-demo": "node scripts/sync-demo.mjs"
+  }
+}

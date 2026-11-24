@@ -1,0 +1,392 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "4-bit-adder",
+  "description": "4-bit ripple-carry adder from full-adder chips (which contain half-adder chips). The carry ripples through every stage, 2 gate delays each.",
+  "components": [
+    {
+      "id": "zero",
+      "type": "CONST",
+      "x": 180,
+      "y": 140,
+      "props": {
+        "value": 0
+      }
+    },
+    {
+      "id": "A0",
+      "type": "INPUT",
+      "x": 60,
+      "y": 60,
+      "label": "A0"
+    },
+    {
+      "id": "B0",
+      "type": "INPUT",
+      "x": 60,
+      "y": 100,
+      "label": "B0"
+    },
+    {
+      "id": "fa0",
+      "type": "SUBCIRCUIT",
+      "x": 260,
+      "y": 40,
+      "props": {
+        "chip": "full-adder"
+      }
+    },
+    {
+      "id": "S0",
+      "type": "OUTPUT",
+      "x": 900,
+      "y": 60,
+      "label": "S0"
+    },
+    {
+      "id": "A1",
+      "type": "INPUT",
+      "x": 60,
+      "y": 180,
+      "label": "A1"
+    },
+    {
+      "id": "B1",
+      "type": "INPUT",
+      "x": 60,
+      "y": 220,
+      "label": "B1"
+    },
+    {
+      "id": "fa1",
+      "type": "SUBCIRCUIT",
+      "x": 420,
+      "y": 160,
+      "props": {
+        "chip": "full-adder"
+      }
+    },
+    {
+      "id": "S1",
+      "type": "OUTPUT",
+      "x": 900,
+      "y": 180,
+      "label": "S1"
+    },
+    {
+      "id": "A2",
+      "type": "INPUT",
+      "x": 60,
+      "y": 300,
+      "label": "A2"
+    },
+    {
+      "id": "B2",
+      "type": "INPUT",
+      "x": 60,
+      "y": 340,
+      "label": "B2"
+    },
+    {
+      "id": "fa2",
+      "type": "SUBCIRCUIT",
+      "x": 580,
+      "y": 280,
+      "props": {
+        "chip": "full-adder"
+      }
+    },
+    {
+      "id": "S2",
+      "type": "OUTPUT",
+      "x": 900,
+      "y": 300,
+      "label": "S2"
+    },
+    {
+      "id": "A3",
+      "type": "INPUT",
+      "x": 60,
+      "y": 420,
+      "label": "A3"
+    },
+    {
+      "id": "B3",
+      "type": "INPUT",
+      "x": 60,
+      "y": 460,
+      "label": "B3"
+    },
+    {
+      "id": "fa3",
+      "type": "SUBCIRCUIT",
+      "x": 740,
+      "y": 400,
+      "props": {
+        "chip": "full-adder"
+      }
+    },
+    {
+      "id": "S3",
+      "type": "OUTPUT",
+      "x": 900,
+      "y": 420,
+      "label": "S3"
+    },
+    {
+      "id": "COUT",
+      "type": "OUTPUT",
+      "x": 900,
+      "y": 480,
+      "label": "COUT"
+    }
+  ],
+  "wires": [
+    {
+      "from": "A0.out",
+      "to": "fa0.A"
+    },
+    {
+      "from": "B0.out",
+      "to": "fa0.B"
+    },
+    {
+      "from": "zero.out",
+      "to": "fa0.CIN"
+    },
+    {
+      "from": "fa0.S",
+      "to": "S0.in"
+    },
+    {
+      "from": "A1.out",
+      "to": "fa1.A"
+    },
+    {
+      "from": "B1.out",
+      "to": "fa1.B"
+    },
+    {
+      "from": "fa0.COUT",
+      "to": "fa1.CIN"
+    },
+    {
+      "from": "fa1.S",
+      "to": "S1.in"
+    },
+    {
+      "from": "A2.out",
+      "to": "fa2.A"
+    },
+    {
+      "from": "B2.out",
+      "to": "fa2.B"
+    },
+    {
+      "from": "fa1.COUT",
+      "to": "fa2.CIN"
+    },
+    {
+      "from": "fa2.S",
+      "to": "S2.in"
+    },
+    {
+      "from": "A3.out",
+      "to": "fa3.A"
+    },
+    {
+      "from": "B3.out",
+      "to": "fa3.B"
+    },
+    {
+      "from": "fa2.COUT",
+      "to": "fa3.CIN"
+    },
+    {
+      "from": "fa3.S",
+      "to": "S3.in"
+    },
+    {
+      "from": "fa3.COUT",
+      "to": "COUT.in"
+    }
+  ],
+  "chips": {
+    "full-adder": {
+      "name": "full-adder",
+      "description": "Two half-adder chips and an OR gate. Cin -> Cout takes 2 gate delays.",
+      "components": [
+        {
+          "id": "A",
+          "type": "INPUT",
+          "x": 60,
+          "y": 100,
+          "label": "A"
+        },
+        {
+          "id": "B",
+          "type": "INPUT",
+          "x": 60,
+          "y": 160,
+          "label": "B"
+        },
+        {
+          "id": "CIN",
+          "type": "INPUT",
+          "x": 60,
+          "y": 300,
+          "label": "CIN"
+        },
+        {
+          "id": "ha1",
+          "type": "SUBCIRCUIT",
+          "x": 200,
+          "y": 80,
+          "props": {
+            "chip": "half-adder"
+          }
+        },
+        {
+          "id": "ha2",
+          "type": "SUBCIRCUIT",
+          "x": 380,
+          "y": 180,
+          "props": {
+            "chip": "half-adder"
+          }
+        },
+        {
+          "id": "o1",
+          "type": "OR",
+          "x": 580,
+          "y": 240
+        },
+        {
+          "id": "S",
+          "type": "OUTPUT",
+          "x": 720,
+          "y": 200,
+          "label": "S"
+        },
+        {
+          "id": "COUT",
+          "type": "OUTPUT",
+          "x": 720,
+          "y": 260,
+          "label": "COUT"
+        }
+      ],
+      "wires": [
+        {
+          "from": "A.out",
+          "to": "ha1.A"
+        },
+        {
+          "from": "B.out",
+          "to": "ha1.B"
+        },
+        {
+          "from": "ha1.S",
+          "to": "ha2.A"
+        },
+        {
+          "from": "CIN.out",
+          "to": "ha2.B"
+        },
+        {
+          "from": "ha2.C",
+          "to": "o1.in0"
+        },
+        {
+          "from": "ha1.C",
+          "to": "o1.in1",
+          "route": {
+            "x": 340
+          }
+        },
+        {
+          "from": "ha2.S",
+          "to": "S.in"
+        },
+        {
+          "from": "o1.out",
+          "to": "COUT.in"
+        }
+      ],
+      "chips": {
+        "half-adder": {
+          "name": "half-adder",
+          "description": "S = A XOR B, C = A AND B. Two gates, one gate delay.",
+          "components": [
+            {
+              "id": "A",
+              "type": "INPUT",
+              "x": 80,
+              "y": 80,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "type": "INPUT",
+              "x": 80,
+              "y": 220,
+              "label": "B"
+            },
+            {
+              "id": "x1",
+              "type": "XOR",
+              "x": 240,
+              "y": 80
+            },
+            {
+              "id": "a1",
+              "type": "AND",
+              "x": 240,
+              "y": 180
+            },
+            {
+              "id": "S",
+              "type": "OUTPUT",
+              "x": 400,
+              "y": 100,
+              "label": "S"
+            },
+            {
+              "id": "C",
+              "type": "OUTPUT",
+              "x": 400,
+              "y": 200,
+              "label": "C"
+            }
+          ],
+          "wires": [
+            {
+              "from": "A.out",
+              "to": "x1.in0"
+            },
+            {
+              "from": "A.out",
+              "to": "a1.in0"
+            },
+            {
+              "from": "B.out",
+              "to": "x1.in1"
+            },
+            {
+              "from": "B.out",
+              "to": "a1.in1"
+            },
+            {
+              "from": "x1.out",
+              "to": "S.in"
+            },
+            {
+              "from": "a1.out",
+              "to": "C.in"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

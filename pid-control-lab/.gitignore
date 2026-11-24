@@ -1,0 +1,10 @@
+node_modules/
+firmware/test_pid
+firmware/test_pid.exe
+firmware/test_pid_double
+firmware/test_pid_double.exe
+firmware/examples/pico_motor_speed/build/
+*.o
+.DS_Store
+Thumbs.db
+__pycache__/

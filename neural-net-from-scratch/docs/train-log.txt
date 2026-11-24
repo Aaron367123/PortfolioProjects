@@ -1,0 +1,53 @@
+loaded MNIST in 0.1 s: 60000 train, 10000 test
+pixel mean 0.1307, std 0.3081
+MLP 784-256-128-10, 235,146 parameters, config {
+  epochs: 30,
+  hidden: [ 256, 128 ],
+  seed: 1,
+  batch: 128,
+  lr: 0.001,
+  dropout: 0.2,
+  weightDecay: 0.02,
+  augment: true,
+  validation: 5000
+}
+epoch  1  loss 1.0531  train 94.23% (aug 65.43%)  val 94.28% (loss 0.1932)  lr 0.001  25.4 s
+epoch  2  loss 0.3299  train 96.35% (aug 89.73%)  val 96.06% (loss 0.1241)  lr 0.0009971  22.2 s
+epoch  3  loss 0.2391  train 96.86% (aug 92.60%)  val 96.50% (loss 0.1126)  lr 0.0009885  25.7 s
+epoch  4  loss 0.1981  train 97.42% (aug 93.97%)  val 97.26% (loss 0.0928)  lr 0.0009741  25.9 s
+epoch  5  loss 0.1807  train 97.47% (aug 94.47%)  val 97.46% (loss 0.0852)  lr 0.0009543  24.7 s
+epoch  6  loss 0.1699  train 97.96% (aug 94.75%)  val 97.56% (loss 0.0757)  lr 0.0009292  24.0 s
+epoch  7  loss 0.1530  train 98.18% (aug 95.26%)  val 97.84% (loss 0.0703)  lr 0.0008991  20.4 s
+epoch  8  loss 0.1435  train 98.15% (aug 95.62%)  val 97.98% (loss 0.0607)  lr 0.0008645  21.0 s
+epoch  9  loss 0.1337  train 98.28% (aug 95.98%)  val 98.12% (loss 0.0610)  lr 0.0008256  21.1 s
+epoch 10  loss 0.1288  train 98.41% (aug 96.04%)  val 98.18% (loss 0.0619)  lr 0.0007829  22.8 s
+epoch 11  loss 0.1217  train 98.63% (aug 96.27%)  val 98.18% (loss 0.0577)  lr 0.000737  23.2 s
+epoch 12  loss 0.1147  train 98.49% (aug 96.43%)  val 98.12% (loss 0.0606)  lr 0.0006883  22.0 s
+epoch 13  loss 0.1117  train 98.61% (aug 96.51%)  val 98.18% (loss 0.0559)  lr 0.0006375  19.7 s
+epoch 14  loss 0.1063  train 98.87% (aug 96.77%)  val 98.56% (loss 0.0506)  lr 0.0005852  21.4 s
+epoch 15  loss 0.1027  train 98.74% (aug 96.86%)  val 98.32% (loss 0.0522)  lr 0.0005319  26.1 s
+epoch 16  loss 0.1018  train 98.85% (aug 96.80%)  val 98.62% (loss 0.0488)  lr 0.0004783  22.7 s
+epoch 17  loss 0.0929  train 98.89% (aug 97.11%)  val 98.50% (loss 0.0480)  lr 0.000425  22.1 s
+epoch 18  loss 0.0899  train 99.05% (aug 97.18%)  val 98.62% (loss 0.0448)  lr 0.0003727  22.3 s
+epoch 19  loss 0.0885  train 98.97% (aug 97.26%)  val 98.68% (loss 0.0465)  lr 0.0003219  26.4 s
+epoch 20  loss 0.0810  train 99.04% (aug 97.52%)  val 98.72% (loss 0.0433)  lr 0.0002732  21.2 s
+epoch 21  loss 0.0802  train 99.16% (aug 97.54%)  val 98.70% (loss 0.0453)  lr 0.0002273  24.8 s
+epoch 22  loss 0.0794  train 99.14% (aug 97.52%)  val 98.74% (loss 0.0439)  lr 0.0001846  27.6 s
+epoch 23  loss 0.0772  train 99.11% (aug 97.62%)  val 98.70% (loss 0.0414)  lr 0.0001457  23.4 s
+epoch 24  loss 0.0754  train 99.12% (aug 97.63%)  val 98.88% (loss 0.0402)  lr 0.000111  18.9 s
+epoch 25  loss 0.0741  train 99.19% (aug 97.67%)  val 98.80% (loss 0.0417)  lr 0.00008092  20.3 s
+epoch 26  loss 0.0729  train 99.29% (aug 97.73%)  val 98.82% (loss 0.0403)  lr 0.0000558  20.1 s
+epoch 27  loss 0.0687  train 99.27% (aug 97.84%)  val 98.76% (loss 0.0414)  lr 0.00003595  20.6 s
+epoch 28  loss 0.0705  train 99.25% (aug 97.86%)  val 98.80% (loss 0.0405)  lr 0.0000216  24.7 s
+epoch 29  loss 0.0700  train 99.26% (aug 97.86%)  val 98.82% (loss 0.0405)  lr 0.00001292  24.0 s
+epoch 30  loss 0.0703  train 99.30% (aug 97.75%)  val 98.82% (loss 0.0402)  lr 0.00001  20.8 s
+
+trained in 11.4 min; best val 98.88% at epoch 24
+test accuracy fp32: 98.86%
+  f32    940584 bytes  test 98.86%
+  f16    471080 bytes  test 98.86%
+  int8   237904 bytes  test 98.86%
+inference: 112 µs per digit (batch 1), 107 µs per digit (batch 1000)
+
+wrote /D:/Downloads/PortfolioWebsite/code/neural-net-from-scratch/model/: model.bin 237904 B, metrics.json, 50 demo samples
+weakest digits: 8 (97.74%), 9 (97.92%), 5 (98.54%)
