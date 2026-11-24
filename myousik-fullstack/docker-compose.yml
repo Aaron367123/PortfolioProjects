@@ -1,0 +1,20 @@
+services:
+  myousik:
+    build: .
+    image: myousik-fullstack:2.0
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      # Fill an empty database with the demo library on first start.
+      SEED_IF_EMPTY: "true"
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-myousik-demo-1}
+      # Secure cookies need HTTPS. Browsers treat http://localhost as secure,
+      # so this works locally; behind a TLS proxy also set TRUST_PROXY=true.
+      COOKIE_SECURE: "true"
+    volumes:
+      - myousik-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  myousik-data:

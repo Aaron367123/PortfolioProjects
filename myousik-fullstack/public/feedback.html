@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback · Myousik</title>
+  <meta name="description" content="Tell us how Myousik sounds.">
+  <link rel="icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/pages/feedback.js"></script>
+</head>
+<body data-page="feedback">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" class="card-page">
+    <div class="form-card">
+      <form id="feedback-form" class="form-grid" novalidate>
+        <div>
+          <h1>Give Us Feedback</h1>
+          <p class="muted">How does Myousik sound? Every field is required.</p>
+        </div>
+        <div class="form-alert" role="alert"></div>
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" maxlength="80" autocomplete="name" placeholder="Jane Doe" required aria-describedby="name-error">
+          <p class="field-error" id="name-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" maxlength="254" autocomplete="email" placeholder="jane@example.com" required aria-describedby="email-error">
+          <p class="field-error" id="email-error"></p>
+        </div>
+
+        <fieldset class="field" data-group="rating" aria-describedby="rating-error">
+          <legend>How was the audio quality?</legend>
+          <div class="rating-options">
+            <label class="rating-option"><input type="radio" name="rating" value="1"><span><b>1</b>Poor</span></label>
+            <label class="rating-option"><input type="radio" name="rating" value="2"><span><b>2</b>OK</span></label>
+            <label class="rating-option"><input type="radio" name="rating" value="3"><span><b>3</b>Great</span></label>
+          </div>
+          <p class="field-error" id="rating-error"></p>
+        </fieldset>
+
+        <div class="field">
+          <label for="comments">Feedback</label>
+          <textarea id="comments" name="comments" rows="5" maxlength="2000" placeholder="Tell us what you liked, or what we should fix…" required aria-describedby="comments-count comments-error"></textarea>
+          <p class="hint char-count" id="comments-count">0 / 2000</p>
+          <p class="field-error" id="comments-error"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send feedback</button>
+      </form>
+
+      <div class="success-panel" id="feedback-success" hidden tabindex="-1">
+        <span class="tick" id="tick"></span>
+        <h1>Thanks for the feedback!</h1>
+        <p class="muted" id="success-text"></p>
+        <button type="button" class="btn btn-secondary" id="send-another">Send another</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

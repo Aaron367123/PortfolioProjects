@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Myousik — A New Way To Stream</title>
+  <meta name="description" content="Myousik 2.0: browse a music library, build playlists and share feedback.">
+  <link rel="icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/pages/home.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-content">
+        <span class="eyebrow">Myousik 2.0</span>
+        <h1 id="hero-title">A New Way To Stream</h1>
+        <p class="lead">Take your pick from our library, build playlists that are actually saved, and press play.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/library">Browse the library</a>
+          <a class="btn btn-secondary" href="/playlists">Make a playlist</a>
+        </div>
+      </div>
+      <div class="now-playing">
+        <button type="button" class="play-btn" id="hero-play" aria-label="Play a lo-fi track"></button>
+        <div>
+          <strong>What's Playing?</strong>
+          <span id="hero-track">Tap play for a lo-fi loop</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-band" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <div>
+          <h2 id="intro-title">All your favourites in one place</h2>
+          <p class="muted">Myousik is music streaming made easy. Jazz, classical, worship, lo-fi and more — pick a genre to jump straight into the library.</p>
+          <div class="stats" id="stats" aria-live="polite"></div>
+        </div>
+        <ul class="chips" id="genre-chips" aria-label="Genres"></ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="picks-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 id="picks-title">Top Picks</h2>
+            <p>The songs that show up in the most playlists.</p>
+          </div>
+          <a class="link-arrow" href="/library?sort=popularity">See all songs →</a>
+        </div>
+        <div class="card-grid" id="top-picks" aria-busy="true"></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="artists-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 id="artists-title">Popular Artists</h2>
+            <p>Tap an artist to see their songs.</p>
+          </div>
+        </div>
+        <ul class="artist-grid" id="artists"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

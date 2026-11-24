@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Myousik</title>
+  <meta name="description" content="The story of Myousik: a college team's mockup, rebuilt as a full-stack app.">
+  <link rel="icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/pages/static.js"></script>
+</head>
+<body data-page="about">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>About Myousik</h1>
+        <p>Started as a four-person college project. Rebuilt so that every button actually does something.</p>
+      </div>
+    </section>
+
+    <div class="container page-body">
+      <section class="section" aria-labelledby="story-title">
+        <h2 id="story-title">From mockup to working app</h2>
+        <div class="compare">
+          <div class="panel v1">
+            <h3>Version 1 — the class project</h3>
+            <ul>
+              <li>Static HTML pages with jQuery 1.4.2 form checks.</li>
+              <li>"Log in" and "Send feedback" just linked to a success page — nothing was saved.</li>
+              <li>Song cards and artists were hard-coded in the markup.</li>
+              <li>One mp3 behind a play button.</li>
+            </ul>
+          </div>
+          <div class="panel v2">
+            <h3>Version 2 — the full-stack rebuild</h3>
+            <ul>
+              <li>Express REST API with SQLite, migrations and seed data.</li>
+              <li>Real accounts: scrypt-hashed passwords and server-side sessions.</li>
+              <li>Song library with search, sorting, pagination and full CRUD.</li>
+              <li>Personal playlists you can reorder, plus feedback that is stored.</li>
+              <li>The same validation rules run in the browser and on the server.</li>
+              <li>Automated API tests with Node's built-in test runner.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="team-title">
+        <h2 id="team-title">The original team</h2>
+        <p class="muted">Version 1 was designed and built by four Computer Engineering Technology classmates.</p>
+        <div class="about-grid">
+          <article class="panel member">
+            <span class="avatar" aria-hidden="true">M</span>
+            <div><h3>Medi Muamba</h3><p>Computer Engineering Technology student planning to go on to study commerce and, eventually, nursing.</p></div>
+          </article>
+          <article class="panel member">
+            <span class="avatar" aria-hidden="true">C</span>
+            <div><h3>Caio Q</h3><p>Back-end developer with Go and Java experience who loves picking up new languages, especially compiled ones.</p></div>
+          </article>
+          <article class="panel member">
+            <span class="avatar" aria-hidden="true">A</span>
+            <div><h3>Aaron Jara</h3><p>Computer engineering technology student who reads and plays basketball off the clock. Rebuilt Myousik as this full-stack app.</p></div>
+          </article>
+          <article class="panel member">
+            <span class="avatar" aria-hidden="true">C</span>
+            <div><h3>Chidinma Etumni</h3><p>Passionate team player and problem solver, comfortable with office tools, HTML and Oracle databases.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="credits-title">
+        <h2 id="credits-title">Credits</h2>
+        <p class="muted">All artists, songs and albums in the demo library are fictional, and the demo audio is synthesised by a script in the repository. Artwork comes from the v1 project. Headings use Alegreya Sans (SIL Open Font License).</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>
