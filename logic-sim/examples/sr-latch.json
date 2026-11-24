@@ -1,0 +1,84 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "sr-latch",
+  "description": "Cross-coupled NOR latch. S sets Q, R resets it, both low holds. Releasing S and R together from 1/1 is a race: the latch oscillates in the unit-delay model.",
+  "components": [
+    {
+      "id": "R",
+      "type": "INPUT",
+      "x": 60,
+      "y": 100,
+      "label": "R"
+    },
+    {
+      "id": "S",
+      "type": "INPUT",
+      "x": 60,
+      "y": 260,
+      "label": "S"
+    },
+    {
+      "id": "n1",
+      "type": "NOR",
+      "x": 220,
+      "y": 100
+    },
+    {
+      "id": "n2",
+      "type": "NOR",
+      "x": 220,
+      "y": 220
+    },
+    {
+      "id": "Q",
+      "type": "OUTPUT",
+      "x": 420,
+      "y": 120,
+      "label": "Q"
+    },
+    {
+      "id": "QN",
+      "type": "OUTPUT",
+      "x": 420,
+      "y": 240,
+      "label": "QN"
+    }
+  ],
+  "wires": [
+    {
+      "from": "R.out",
+      "to": "n1.in0"
+    },
+    {
+      "from": "S.out",
+      "to": "n2.in1"
+    },
+    {
+      "from": "n1.out",
+      "to": "n2.in0",
+      "route": {
+        "y": 170,
+        "x1": 320,
+        "x2": 200
+      }
+    },
+    {
+      "from": "n2.out",
+      "to": "n1.in1",
+      "route": {
+        "y": 190,
+        "x1": 340,
+        "x2": 180
+      }
+    },
+    {
+      "from": "n1.out",
+      "to": "Q.in"
+    },
+    {
+      "from": "n2.out",
+      "to": "QN.in"
+    }
+  ]
+}

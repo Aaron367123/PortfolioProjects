@@ -1,0 +1,74 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "half-adder",
+  "description": "S = A XOR B, C = A AND B. Two gates, one gate delay.",
+  "components": [
+    {
+      "id": "A",
+      "type": "INPUT",
+      "x": 80,
+      "y": 80,
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "type": "INPUT",
+      "x": 80,
+      "y": 220,
+      "label": "B"
+    },
+    {
+      "id": "x1",
+      "type": "XOR",
+      "x": 240,
+      "y": 80
+    },
+    {
+      "id": "a1",
+      "type": "AND",
+      "x": 240,
+      "y": 180
+    },
+    {
+      "id": "S",
+      "type": "OUTPUT",
+      "x": 400,
+      "y": 100,
+      "label": "S"
+    },
+    {
+      "id": "C",
+      "type": "OUTPUT",
+      "x": 400,
+      "y": 200,
+      "label": "C"
+    }
+  ],
+  "wires": [
+    {
+      "from": "A.out",
+      "to": "x1.in0"
+    },
+    {
+      "from": "A.out",
+      "to": "a1.in0"
+    },
+    {
+      "from": "B.out",
+      "to": "x1.in1"
+    },
+    {
+      "from": "B.out",
+      "to": "a1.in1"
+    },
+    {
+      "from": "x1.out",
+      "to": "S.in"
+    },
+    {
+      "from": "a1.out",
+      "to": "C.in"
+    }
+  ]
+}

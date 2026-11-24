@@ -16,9 +16,9 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS = os.path.join(ROOT, "benchmarks", "results.json")
 
-BG, SURFACE, BORDER = "#0b0f1a", "#141a2e", "#232b47"
-TEXT, MUTED, GRID = "#e8ebf5", "#9aa3bd", "#1f2742"
-ACCENT, ACCENT2 = "#7c5cff", "#22d3ee"
+BG, SURFACE, BORDER = "#07110c", "#0e1d16", "#1f3a2c"
+TEXT, MUTED, GRID = "#e8f0ea", "#9fb5a8", "#173126"
+ACCENT, ACCENT2 = "#e0a458", "#3ee08f"
 S = 2  # supersampling factor
 W, H = 1440, 780
 

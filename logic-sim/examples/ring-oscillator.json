@@ -1,0 +1,98 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "ring-oscillator",
+  "description": "A NAND and four inverters in a loop: five inversions, so no stable state. Flip EN to 1 and the instability detector reports the loop and its period (2 x 5 = 10 ticks).",
+  "components": [
+    {
+      "id": "EN",
+      "type": "INPUT",
+      "x": 40,
+      "y": 100,
+      "label": "EN"
+    },
+    {
+      "id": "g0",
+      "type": "NAND",
+      "x": 160,
+      "y": 100
+    },
+    {
+      "id": "inv1",
+      "type": "NOT",
+      "x": 300,
+      "y": 120
+    },
+    {
+      "id": "inv2",
+      "type": "NOT",
+      "x": 400,
+      "y": 120
+    },
+    {
+      "id": "inv3",
+      "type": "NOT",
+      "x": 500,
+      "y": 120
+    },
+    {
+      "id": "inv4",
+      "type": "NOT",
+      "x": 600,
+      "y": 120
+    },
+    {
+      "id": "OSC",
+      "type": "OUTPUT",
+      "x": 760,
+      "y": 120,
+      "label": "OSC"
+    },
+    {
+      "id": "ring",
+      "type": "PROBE",
+      "x": 760,
+      "y": 60,
+      "label": "RING"
+    }
+  ],
+  "wires": [
+    {
+      "from": "EN.out",
+      "to": "g0.in0"
+    },
+    {
+      "from": "g0.out",
+      "to": "inv1.in"
+    },
+    {
+      "from": "inv1.out",
+      "to": "inv2.in"
+    },
+    {
+      "from": "inv2.out",
+      "to": "inv3.in"
+    },
+    {
+      "from": "inv3.out",
+      "to": "inv4.in"
+    },
+    {
+      "from": "inv4.out",
+      "to": "g0.in1",
+      "route": {
+        "y": 200,
+        "x1": 680,
+        "x2": 140
+      }
+    },
+    {
+      "from": "inv4.out",
+      "to": "OSC.in"
+    },
+    {
+      "from": "inv4.out",
+      "to": "ring.in"
+    }
+  ]
+}

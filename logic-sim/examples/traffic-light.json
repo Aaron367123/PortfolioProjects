@@ -1,0 +1,157 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "traffic-light",
+  "description": "Moore state machine on two D flip-flops: GREEN (00) -> AMBER (01) -> RED (10) -> GREEN. It only leaves green while REQ is high.",
+  "components": [
+    {
+      "id": "CLK",
+      "type": "CLOCK",
+      "x": 220,
+      "y": 300,
+      "label": "CLK",
+      "props": {
+        "period": 16
+      }
+    },
+    {
+      "id": "REQ",
+      "type": "INPUT",
+      "x": 220,
+      "y": 200,
+      "label": "REQ",
+      "props": {
+        "value": 1
+      }
+    },
+    {
+      "id": "s0",
+      "type": "DFF",
+      "x": 480,
+      "y": 80,
+      "label": "S0",
+      "props": {
+        "init": 0
+      }
+    },
+    {
+      "id": "s1",
+      "type": "DFF",
+      "x": 480,
+      "y": 260,
+      "label": "S1",
+      "props": {
+        "init": 0
+      }
+    },
+    {
+      "id": "green",
+      "type": "NOR",
+      "x": 200,
+      "y": 60
+    },
+    {
+      "id": "go",
+      "type": "AND",
+      "x": 340,
+      "y": 80
+    },
+    {
+      "id": "GREEN",
+      "type": "OUTPUT",
+      "x": 760,
+      "y": 40,
+      "label": "GREEN",
+      "props": {
+        "color": "led"
+      }
+    },
+    {
+      "id": "AMBER",
+      "type": "OUTPUT",
+      "x": 760,
+      "y": 100,
+      "label": "AMBER",
+      "props": {
+        "color": "warn"
+      }
+    },
+    {
+      "id": "RED",
+      "type": "OUTPUT",
+      "x": 760,
+      "y": 160,
+      "label": "RED",
+      "props": {
+        "color": "danger"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "from": "green.out",
+      "to": "go.in0"
+    },
+    {
+      "from": "REQ.out",
+      "to": "go.in1"
+    },
+    {
+      "from": "go.out",
+      "to": "s0.d"
+    },
+    {
+      "from": "CLK.out",
+      "to": "s0.clk",
+      "route": {
+        "x": 460
+      }
+    },
+    {
+      "from": "CLK.out",
+      "to": "s1.clk",
+      "route": {
+        "x": 460
+      }
+    },
+    {
+      "from": "s0.q",
+      "to": "s1.d",
+      "route": {
+        "y": 200,
+        "x1": 600,
+        "x2": 440
+      }
+    },
+    {
+      "from": "s0.q",
+      "to": "green.in1",
+      "route": {
+        "y": 0,
+        "x1": 620,
+        "x2": 180
+      }
+    },
+    {
+      "from": "s1.q",
+      "to": "green.in0",
+      "route": {
+        "y": 380,
+        "x1": 640,
+        "x2": 160
+      }
+    },
+    {
+      "from": "green.out",
+      "to": "GREEN.in"
+    },
+    {
+      "from": "s0.q",
+      "to": "AMBER.in"
+    },
+    {
+      "from": "s1.q",
+      "to": "RED.in"
+    }
+  ]
+}

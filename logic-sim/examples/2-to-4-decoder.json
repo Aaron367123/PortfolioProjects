@@ -1,0 +1,182 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "2-to-4-decoder",
+  "description": "Exactly one output goes high: the one selected by A1 A0, while EN is high.",
+  "components": [
+    {
+      "id": "A1",
+      "type": "INPUT",
+      "x": 60,
+      "y": 60,
+      "label": "A1"
+    },
+    {
+      "id": "A0",
+      "type": "INPUT",
+      "x": 60,
+      "y": 160,
+      "label": "A0"
+    },
+    {
+      "id": "EN",
+      "type": "INPUT",
+      "x": 60,
+      "y": 480,
+      "label": "EN",
+      "props": {
+        "value": 1
+      }
+    },
+    {
+      "id": "na1",
+      "type": "NOT",
+      "x": 180,
+      "y": 60
+    },
+    {
+      "id": "na0",
+      "type": "NOT",
+      "x": 180,
+      "y": 160
+    },
+    {
+      "id": "y0g",
+      "type": "AND",
+      "x": 440,
+      "y": 60,
+      "props": {
+        "inputs": 3
+      }
+    },
+    {
+      "id": "Y0",
+      "type": "OUTPUT",
+      "x": 600,
+      "y": 80,
+      "label": "Y0"
+    },
+    {
+      "id": "y1g",
+      "type": "AND",
+      "x": 440,
+      "y": 180,
+      "props": {
+        "inputs": 3
+      }
+    },
+    {
+      "id": "Y1",
+      "type": "OUTPUT",
+      "x": 600,
+      "y": 200,
+      "label": "Y1"
+    },
+    {
+      "id": "y2g",
+      "type": "AND",
+      "x": 440,
+      "y": 300,
+      "props": {
+        "inputs": 3
+      }
+    },
+    {
+      "id": "Y2",
+      "type": "OUTPUT",
+      "x": 600,
+      "y": 320,
+      "label": "Y2"
+    },
+    {
+      "id": "y3g",
+      "type": "AND",
+      "x": 440,
+      "y": 420,
+      "props": {
+        "inputs": 3
+      }
+    },
+    {
+      "id": "Y3",
+      "type": "OUTPUT",
+      "x": 600,
+      "y": 440,
+      "label": "Y3"
+    }
+  ],
+  "wires": [
+    {
+      "from": "A1.out",
+      "to": "na1.in"
+    },
+    {
+      "from": "A0.out",
+      "to": "na0.in"
+    },
+    {
+      "from": "na1.out",
+      "to": "y0g.in0"
+    },
+    {
+      "from": "na0.out",
+      "to": "y0g.in1"
+    },
+    {
+      "from": "EN.out",
+      "to": "y0g.in2"
+    },
+    {
+      "from": "y0g.out",
+      "to": "Y0.in"
+    },
+    {
+      "from": "na1.out",
+      "to": "y1g.in0"
+    },
+    {
+      "from": "A0.out",
+      "to": "y1g.in1"
+    },
+    {
+      "from": "EN.out",
+      "to": "y1g.in2"
+    },
+    {
+      "from": "y1g.out",
+      "to": "Y1.in"
+    },
+    {
+      "from": "A1.out",
+      "to": "y2g.in0"
+    },
+    {
+      "from": "na0.out",
+      "to": "y2g.in1"
+    },
+    {
+      "from": "EN.out",
+      "to": "y2g.in2"
+    },
+    {
+      "from": "y2g.out",
+      "to": "Y2.in"
+    },
+    {
+      "from": "A1.out",
+      "to": "y3g.in0"
+    },
+    {
+      "from": "A0.out",
+      "to": "y3g.in1"
+    },
+    {
+      "from": "EN.out",
+      "to": "y3g.in2"
+    },
+    {
+      "from": "y3g.out",
+      "to": "Y3.in"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "neural-net-from-scratch",
+  "version": "1.0.0",
+  "description": "A neural network written from scratch in JavaScript (no ML libraries), trained on MNIST in Node and run in the browser.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Aaron Morris Jara",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "download": "node scripts/download-mnist.js",
+    "train": "node train.js",
+    "test": "node --test --test-reporter=spec \"test/*.test.js\"",
+    "bench": "node scripts/bench-matmul.js",
+    "figures": "node scripts/export-figdata.js && python scripts/make_figures.py --jpeg-dir ../../images/projects/digit-recognizer",
+    "sync-demo": "node scripts/sync-demo.js"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "node": "v24.14.1",
+  "shapes": {
+    "batch": 128,
+    "in": 784,
+    "out": 256
+  },
+  "results": {
+    "fwdNaive": {
+      "label": "forward  naive i-j-k",
+      "ms": 87.11,
+      "gflops": 0.59
+    },
+    "fwdIKJ": {
+      "label": "forward  i-k-j row streaming",
+      "ms": 52.17,
+      "gflops": 0.98
+    },
+    "fwdTiled": {
+      "label": "forward  4×4 register tile",
+      "ms": 21.29,
+      "gflops": 2.41
+    },
+    "mnistNaive": {
+      "label": "forward  naive, MNIST pixels",
+      "ms": 81.21,
+      "gflops": 0.63
+    },
+    "mnistTiled": {
+      "label": "forward  4×4 tile, MNIST pixels",
+      "ms": 20.79,
+      "gflops": 2.47
+    },
+    "mnistSparse": {
+      "label": "forward  zero-skipping i-k-j, MNIST pixels",
+      "ms": 9.92,
+      "gflops": 5.18
+    },
+    "mnistDispatch": {
+      "label": "forward  matmul() auto-dispatch, MNIST pixels",
+      "ms": 10.25,
+      "gflops": 5.01
+    },
+    "dWNaive": {
+      "label": "dW naive: transpose X, then i-j-k",
+      "ms": 53.48,
+      "gflops": 0.96
+    },
+    "dWTiled": {
+      "label": "dW matmulTransA (Xᵀ·dY via strides)",
+      "ms": 16.15,
+      "gflops": 3.18
+    },
+    "dXNaive": {
+      "label": "dX naive: transpose W, then i-j-k",
+      "ms": 53.54,
+      "gflops": 0.96
+    },
+    "dXTiled": {
+      "label": "dX matmulTransB (dY·Wᵀ via strides)",
+      "ms": 14.18,
+      "gflops": 3.62
+    }
+  },
+  "speedup": {
+    "forwardTiledVsNaive": 4.09,
+    "forwardIKJVsNaive": 1.67,
+    "dWVsNaive": 3.31,
+    "dXVsNaive": 3.78,
+    "mnistDispatchVsNaive": 7.92,
+    "mnistSparseVsTiled": 2.1
+  }
+}

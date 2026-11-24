@@ -1,0 +1,6 @@
+# MNIST is downloaded by `npm run download`, never committed
+data/
+node_modules/
+docs/figdata.json
+.DS_Store
+Thumbs.db

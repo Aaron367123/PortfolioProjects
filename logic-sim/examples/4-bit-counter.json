@@ -1,0 +1,355 @@
+{
+  "schema": "logic-sim",
+  "version": 1,
+  "name": "4-bit-counter",
+  "description": "Synchronous 4-bit counter: bit i toggles when all lower bits are 1 (D = Q xor carry). Hold RST to clear it. The 7-segment display shows the count in hex.",
+  "components": [
+    {
+      "id": "CLK",
+      "type": "CLOCK",
+      "x": 360,
+      "y": 760,
+      "label": "CLK",
+      "props": {
+        "period": 8
+      }
+    },
+    {
+      "id": "RST",
+      "type": "BUTTON",
+      "x": 360,
+      "y": 820,
+      "label": "RST"
+    },
+    {
+      "id": "q0",
+      "type": "DFF",
+      "x": 560,
+      "y": 60,
+      "label": "FF0",
+      "props": {
+        "init": 0
+      }
+    },
+    {
+      "id": "q1",
+      "type": "DFF",
+      "x": 560,
+      "y": 240,
+      "label": "FF1",
+      "props": {
+        "init": 0
+      }
+    },
+    {
+      "id": "q2",
+      "type": "DFF",
+      "x": 560,
+      "y": 420,
+      "label": "FF2",
+      "props": {
+        "init": 0
+      }
+    },
+    {
+      "id": "q3",
+      "type": "DFF",
+      "x": 560,
+      "y": 600,
+      "label": "FF3",
+      "props": {
+        "init": 0
+      }
+    },
+    {
+      "id": "inv0",
+      "type": "NOT",
+      "x": 440,
+      "y": 80
+    },
+    {
+      "id": "x1",
+      "type": "XOR",
+      "x": 420,
+      "y": 240
+    },
+    {
+      "id": "x2",
+      "type": "XOR",
+      "x": 420,
+      "y": 420
+    },
+    {
+      "id": "c2",
+      "type": "AND",
+      "x": 300,
+      "y": 440
+    },
+    {
+      "id": "x3",
+      "type": "XOR",
+      "x": 420,
+      "y": 600
+    },
+    {
+      "id": "c3",
+      "type": "AND",
+      "x": 300,
+      "y": 620,
+      "props": {
+        "inputs": 3
+      }
+    },
+    {
+      "id": "hex",
+      "type": "SEG7",
+      "x": 900,
+      "y": 300,
+      "label": "COUNT"
+    },
+    {
+      "id": "p0",
+      "type": "PROBE",
+      "x": 900,
+      "y": 80,
+      "label": "Q0"
+    },
+    {
+      "id": "p1",
+      "type": "PROBE",
+      "x": 900,
+      "y": 260,
+      "label": "Q1"
+    },
+    {
+      "id": "p2",
+      "type": "PROBE",
+      "x": 900,
+      "y": 440,
+      "label": "Q2"
+    },
+    {
+      "id": "p3",
+      "type": "PROBE",
+      "x": 900,
+      "y": 620,
+      "label": "Q3"
+    }
+  ],
+  "wires": [
+    {
+      "from": "CLK.out",
+      "to": "q0.clk",
+      "route": {
+        "x": 540
+      }
+    },
+    {
+      "from": "RST.out",
+      "to": "q0.rst",
+      "route": {
+        "x": 520
+      }
+    },
+    {
+      "from": "CLK.out",
+      "to": "q1.clk",
+      "route": {
+        "x": 540
+      }
+    },
+    {
+      "from": "RST.out",
+      "to": "q1.rst",
+      "route": {
+        "x": 520
+      }
+    },
+    {
+      "from": "CLK.out",
+      "to": "q2.clk",
+      "route": {
+        "x": 540
+      }
+    },
+    {
+      "from": "RST.out",
+      "to": "q2.rst",
+      "route": {
+        "x": 520
+      }
+    },
+    {
+      "from": "CLK.out",
+      "to": "q3.clk",
+      "route": {
+        "x": 540
+      }
+    },
+    {
+      "from": "RST.out",
+      "to": "q3.rst",
+      "route": {
+        "x": 520
+      }
+    },
+    {
+      "from": "inv0.out",
+      "to": "q0.d"
+    },
+    {
+      "from": "q0.q",
+      "to": "inv0.in",
+      "route": {
+        "y": 40,
+        "x1": 760,
+        "x2": 420
+      }
+    },
+    {
+      "from": "x1.out",
+      "to": "q1.d"
+    },
+    {
+      "from": "q1.q",
+      "to": "x1.in0",
+      "route": {
+        "y": 220,
+        "x1": 740,
+        "x2": 400
+      }
+    },
+    {
+      "from": "q0.q",
+      "to": "x1.in1",
+      "route": {
+        "y": 200,
+        "x1": 760,
+        "x2": 380
+      }
+    },
+    {
+      "from": "c2.out",
+      "to": "x2.in1"
+    },
+    {
+      "from": "x2.out",
+      "to": "q2.d"
+    },
+    {
+      "from": "q2.q",
+      "to": "x2.in0",
+      "route": {
+        "y": 400,
+        "x1": 720,
+        "x2": 400
+      }
+    },
+    {
+      "from": "q0.q",
+      "to": "c2.in0",
+      "route": {
+        "y": 380,
+        "x1": 760,
+        "x2": 280
+      }
+    },
+    {
+      "from": "q1.q",
+      "to": "c2.in1",
+      "route": {
+        "y": 360,
+        "x1": 740,
+        "x2": 260
+      }
+    },
+    {
+      "from": "c3.out",
+      "to": "x3.in1"
+    },
+    {
+      "from": "x3.out",
+      "to": "q3.d"
+    },
+    {
+      "from": "q3.q",
+      "to": "x3.in0",
+      "route": {
+        "y": 580,
+        "x1": 700,
+        "x2": 400
+      }
+    },
+    {
+      "from": "q0.q",
+      "to": "c3.in0",
+      "route": {
+        "y": 560,
+        "x1": 760,
+        "x2": 280
+      }
+    },
+    {
+      "from": "q1.q",
+      "to": "c3.in1",
+      "route": {
+        "y": 540,
+        "x1": 740,
+        "x2": 260
+      }
+    },
+    {
+      "from": "q2.q",
+      "to": "c3.in2",
+      "route": {
+        "y": 520,
+        "x1": 720,
+        "x2": 240
+      }
+    },
+    {
+      "from": "q0.q",
+      "to": "hex.d0",
+      "route": {
+        "x": 840
+      }
+    },
+    {
+      "from": "q1.q",
+      "to": "hex.d1",
+      "route": {
+        "x": 820
+      }
+    },
+    {
+      "from": "q2.q",
+      "to": "hex.d2",
+      "route": {
+        "x": 800
+      }
+    },
+    {
+      "from": "q3.q",
+      "to": "hex.d3",
+      "route": {
+        "x": 780
+      }
+    },
+    {
+      "from": "q0.q",
+      "to": "p0.in"
+    },
+    {
+      "from": "q1.q",
+      "to": "p1.in"
+    },
+    {
+      "from": "q2.q",
+      "to": "p2.in"
+    },
+    {
+      "from": "q3.q",
+      "to": "p3.in"
+    }
+  ]
+}
