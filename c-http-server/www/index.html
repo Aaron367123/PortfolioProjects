@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tinyhttpd</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">served by <code>tinyhttpd/1.0</code></p>
+      <h1>A multithreaded HTTP/1.1 server,<br><span class="grad">written from scratch in C.</span></h1>
+      <p class="lead">
+        This page came off the disk through a bounded work queue and a fixed pool of
+        worker threads: no frameworks, no libraries beyond the C standard library,
+        pthreads and the OS socket API.
+      </p>
+    </header>
+
+    <section class="cards" aria-label="Live server statistics">
+      <div class="card"><span class="label">uptime</span><span class="value" id="uptime">-</span></div>
+      <div class="card"><span class="label">requests served</span><span class="value" id="requests">-</span></div>
+      <div class="card"><span class="label">active connections</span><span class="value" id="active">-</span></div>
+      <div class="card"><span class="label">worker threads</span><span class="value" id="workers">-</span></div>
+    </section>
+    <p class="muted small" id="status">Polling <a href="/__stats">/__stats</a> every second&hellip;</p>
+
+    <section class="pipeline" aria-label="Request pipeline">
+      <h2>Request lifecycle</h2>
+      <ol>
+        <li><b>accept()</b> on the main thread</li>
+        <li><b>bounded queue</b> &mdash; full? reply <code>503</code> immediately</li>
+        <li><b>worker pool</b> pops the connection</li>
+        <li><b>parser</b> validates request line &amp; headers</li>
+        <li><b>handler</b> streams the file in 64&nbsp;KiB chunks</li>
+        <li><b>keep-alive</b> loop until idle timeout or <code>Connection: close</code></li>
+      </ol>
+    </section>
+
+    <section aria-label="Endpoints">
+      <h2>Try it</h2>
+      <ul class="links">
+        <li><a href="/__stats">/__stats</a> <span class="muted">JSON counters (atomics)</span></li>
+        <li><a href="/__health">/__health</a> <span class="muted">liveness probe</span></li>
+        <li><a href="/does-not-exist">/does-not-exist</a> <span class="muted">404</span></li>
+        <li><a href="/%2e%2e/secret">/%2e%2e/secret</a> <span class="muted">403: traversal blocked</span></li>
+      </ul>
+    </section>
+
+    <footer class="muted small">
+      Aaron Morris Jara &middot; MIT licensed &middot; see README.md for the design notes
+    </footer>
+  </main>
+
+  <script>
+    // Live counters from the server's own /__stats endpoint.
+    const $ = (id) => document.getElementById(id);
+    function fmtUptime(s) {
+      if (s < 60) return s.toFixed(0) + ' s';
+      if (s < 3600) return Math.floor(s / 60) + ' m ' + Math.floor(s % 60) + ' s';
+      return Math.floor(s / 3600) + ' h ' + Math.floor((s % 3600) / 60) + ' m';
+    }
+    async function poll() {
+      try {
+        const r = await fetch('/__stats', { cache: 'no-store' });
+        const s = await r.json();
+        $('uptime').textContent = fmtUptime(s.uptime_s);
+        $('requests').textContent = s.requests_total.toLocaleString('en-US');
+        $('active').textContent = s.active_connections;
+        $('workers').textContent = s.workers;
+        $('status').innerHTML = 'Live from <a href="/__stats">/__stats</a> &middot; queue depth ' + s.queue_depth;
+      } catch (e) {
+        $('status').textContent = 'Server unreachable (' + e.message + ')';
+      }
+    }
+    poll();
+    setInterval(poll, 1000);
+  </script>
+</body>
+</html>

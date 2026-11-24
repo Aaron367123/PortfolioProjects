@@ -1,0 +1,15 @@
+{
+  "name": "mips-emulator",
+  "version": "1.0.0",
+  "description": "Two-pass MIPS assembler and step-through CPU emulator in plain JavaScript (extends a CENG356 C lab series).",
+  "type": "module",
+  "license": "MIT",
+  "author": "Aaron Morris Jara",
+  "scripts": {
+    "test": "node --test",
+    "swap": "node cli.js examples/swap.asm"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

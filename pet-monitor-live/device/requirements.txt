@@ -1,0 +1,10 @@
+# Raspberry Pi client dependencies (Raspberry Pi OS, Python 3.9+).
+# HTTP uses the standard library (urllib), so --mock needs none of these.
+#
+# System packages first:  sudo apt install python3-venv libgpiod2   (DHT22 needs libgpiod)
+# Enable I2C:             sudo raspi-config  ->  Interface Options  ->  I2C
+#
+#   python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+adafruit-blinka>=8.0
+adafruit-circuitpython-dht>=4.0
+adafruit-circuitpython-ads1x15>=2.2

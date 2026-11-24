@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pet Monitor Live</title>
+  <meta name="description" content="Live IoT dashboard for the Smart Pet Monitor: temperature, water pH, food bowl weight, visits and alerts in real time.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="9" cy="12" r="3.2"/><circle cx="16" cy="8.5" r="3.2"/><circle cx="23" cy="12" r="3.2"/>
+          <path d="M16 15.5c-4.6 0-8.5 4.6-8.5 8.2 0 2.4 1.9 3.3 4 3.3 1.8 0 2.9-.9 4.5-.9s2.7.9 4.5.9c2.1 0 4-.9 4-3.3 0-3.6-3.9-8.2-8.5-8.2z"/>
+        </svg>
+        <div>
+          <h1>Pet Monitor Live</h1>
+          <p class="sub">Smart Pet Monitor · real-time telemetry</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span id="demo-badge" class="badge demo" hidden>Demo mode — simulated data</span>
+        <div id="speed" class="seg" role="group" aria-label="Simulation speed" hidden>
+          <button type="button" data-speed="1">1×</button>
+          <button type="button" data-speed="10">10×</button>
+          <button type="button" data-speed="60">60×</button>
+        </div>
+        <label class="device-select" id="device-wrap" hidden>
+          <span class="visually-hidden">Device</span>
+          <select id="device-select"></select>
+        </label>
+        <span id="conn" class="pill" role="status"><span class="dot"></span><span class="pill-text">Connecting…</span></span>
+        <button type="button" id="open-settings" class="btn icon-btn" aria-label="Settings" title="Thresholds &amp; calibration">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="cards" aria-label="Current readings">
+      <article class="card stat" id="card-temp">
+        <div class="stat-head"><span class="stat-label">Temperature</span><span class="trend" data-trend></span></div>
+        <div class="stat-value"><span data-value>--</span><span class="unit">°C</span></div>
+        <div class="stat-foot" data-foot>DHT22 · GPIO4</div>
+      </article>
+      <article class="card stat" id="card-ph">
+        <div class="stat-head"><span class="stat-label">Water pH</span><span class="trend" data-trend></span></div>
+        <div class="stat-value"><span data-value>--</span><span class="unit">pH</span></div>
+        <div class="stat-foot" data-foot>PH-4502C · ADS1115 A0</div>
+      </article>
+      <article class="card stat" id="card-weight">
+        <div class="stat-head"><span class="stat-label">Food bowl</span><span class="trend" data-trend></span></div>
+        <div class="stat-value"><span data-value>--</span><span class="unit">g</span></div>
+        <div class="stat-foot" data-foot>FSR · ADS1115 A1</div>
+      </article>
+      <article class="card stat presence" id="card-presence">
+        <div class="stat-head"><span class="stat-label">Pet at bowl</span><span class="presence-dot" data-dot></span></div>
+        <div class="stat-value"><span data-value>--</span></div>
+        <div class="stat-foot" data-foot>Person Sensor · I²C 0x62</div>
+      </article>
+      <article class="card stat" id="card-device">
+        <div class="stat-head"><span class="stat-label">Device</span><span class="pill small" data-pill>—</span></div>
+        <div class="stat-value small"><span data-value>--</span></div>
+        <div class="stat-foot" data-foot>last update —</div>
+      </article>
+    </section>
+
+    <main class="grid">
+      <section class="panel charts" aria-label="Sensor charts">
+        <div class="panel-head">
+          <h2>Sensors</h2>
+          <div class="seg" id="window-select" role="group" aria-label="Time window">
+            <button type="button" data-window="60000">1 min</button>
+            <button type="button" data-window="600000">10 min</button>
+            <button type="button" data-window="3600000">1 h</button>
+            <button type="button" data-window="86400000">24 h</button>
+          </div>
+        </div>
+        <div class="chart-block">
+          <div class="chart-title"><span>Temperature</span><span class="chart-meta" id="meta-temp">°C</span></div>
+          <canvas id="chart-temp" aria-label="Temperature chart" role="img"></canvas>
+        </div>
+        <div class="chart-block">
+          <div class="chart-title"><span>Water pH</span><span class="chart-meta" id="meta-ph">pH</span></div>
+          <canvas id="chart-ph" aria-label="Water pH chart" role="img"></canvas>
+        </div>
+        <div class="chart-block">
+          <div class="chart-title"><span>Bowl weight</span><span class="chart-meta" id="meta-weight">g · shaded = pet at bowl</span></div>
+          <canvas id="chart-weight" aria-label="Bowl weight chart" role="img"></canvas>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section class="panel alerts" aria-label="Alerts">
+          <div class="panel-head">
+            <h2>Alerts <span class="count" id="alert-count"></span></h2>
+            <label class="toggle"><input type="checkbox" id="alerts-active-only"> Active only</label>
+          </div>
+          <ul class="alert-list" id="alert-list"></ul>
+        </section>
+
+        <section class="panel" aria-label="Visits">
+          <div class="panel-head">
+            <h2>Visits · last 24 h</h2>
+            <span class="legend"><i class="sw eating"></i>eating <i class="sw drinking"></i>drinking</span>
+          </div>
+          <div class="today" id="today"></div>
+          <div class="timeline" id="timeline" aria-label="Visit timeline"></div>
+          <ul class="visit-list" id="visit-list"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      Built on the Smart Pet Monitor capstone (team: Jasnam Gill, Aaron Jara, Robert Rowlison, Damanpreet Singh).
+      <span class="footer-tech">Raspberry Pi 4 · Node.js · WebSockets · SQLite · Canvas</span>
+    </footer>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Settings" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Thresholds &amp; calibration</h2>
+      <button type="button" class="btn icon-btn" id="close-settings" aria-label="Close settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <form id="settings-form" novalidate>
+      <div id="settings-fields"></div>
+      <div class="token-row" id="token-row" hidden>
+        <label>Admin token <input type="password" id="admin-token" autocomplete="off" placeholder="only if ADMIN_TOKEN is set"></label>
+      </div>
+      <ul class="form-errors" id="settings-errors" role="alert"></ul>
+      <div class="drawer-actions">
+        <button type="button" class="btn ghost" id="reset-settings">Revert</button>
+        <button type="submit" class="btn primary">Save</button>
+      </div>
+    </form>
+  </aside>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

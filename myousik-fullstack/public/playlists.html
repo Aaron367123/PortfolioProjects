@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Playlists · Myousik</title>
+  <meta name="description" content="Create, rename, reorder and delete your Myousik playlists.">
+  <link rel="icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/pages/playlists.js"></script>
+</head>
+<body data-page="playlists">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero" id="page-hero">
+      <div class="container">
+        <h1>Your Playlists</h1>
+        <p>Collect songs from the library, put them in the order you like, and they'll be here next time.</p>
+      </div>
+    </section>
+
+    <div class="container page-body" id="view" aria-live="polite"></div>
+
+    <!-- Rename / describe playlist -->
+    <dialog class="modal" id="rename-dialog" aria-labelledby="rename-title">
+      <form class="modal-inner form-grid" id="rename-form" data-prefix="rename-" novalidate>
+        <div class="modal-head">
+          <h2 id="rename-title">Edit playlist</h2>
+          <button type="button" class="icon-btn" data-close aria-label="Close"></button>
+        </div>
+        <div class="form-alert" role="alert"></div>
+        <div class="field">
+          <label for="rename-name">Name</label>
+          <input type="text" id="rename-name" name="name" maxlength="60" required aria-describedby="rename-name-error">
+          <p class="field-error" id="rename-name-error"></p>
+        </div>
+        <div class="field">
+          <label for="rename-description">Description <span class="optional">(optional)</span></label>
+          <textarea id="rename-description" name="description" maxlength="280" rows="3" aria-describedby="rename-description-error"></textarea>
+          <p class="field-error" id="rename-description-error"></p>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+          <button type="submit" class="btn btn-primary" id="rename-submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Delete playlist -->
+    <dialog class="modal" id="delete-dialog" aria-labelledby="delete-title">
+      <form class="modal-inner" method="dialog">
+        <h2 id="delete-title">Delete this playlist?</h2>
+        <p class="muted" id="delete-text"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+          <button type="button" class="btn btn-danger" id="delete-confirm">Delete playlist</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

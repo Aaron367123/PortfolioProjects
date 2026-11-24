@@ -1,0 +1,442 @@
+{
+  "meta": {
+    "concurrency": 32,
+    "requests": 20000,
+    "reps": 3,
+    "date": "2026-11-23"
+  },
+  "results": [
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 6.178,
+      "rps": 3237.2,
+      "mbps": 3.31,
+      "lat_ms": {
+        "min": 4.547,
+        "avg": 9.779,
+        "p50": 9.512,
+        "p90": 11.095,
+        "p99": 13.819,
+        "max": 18.933
+      },
+      "workers": 1,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": false,
+      "all_rps": [
+        3153.6,
+        3237.2,
+        3253.3
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:61800/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     6.178 s\n  requests/sec   3237.2\n  transfer       20.48 MB body (3.31 MB/s)\n\nlatency (ms)     min 4.547  avg 9.779  p50 9.512  p90 11.095  p99 13.819  max 18.933\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 4.834,
+      "rps": 4137.2,
+      "mbps": 4.24,
+      "lat_ms": {
+        "min": 0.211,
+        "avg": 7.583,
+        "p50": 0.23,
+        "p90": 0.276,
+        "p99": 345.25,
+        "max": 770.569
+      },
+      "workers": 1,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": true,
+      "all_rps": [
+        4115.9,
+        4137.2,
+        4183.9
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:63642/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     4.834 s\n  requests/sec   4137.2\n  transfer       20.48 MB body (4.24 MB/s)\n\nlatency (ms)     min 0.211  avg 7.583  p50 0.230  p90 0.276  p99 345.250  max 770.569\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 7.379,
+      "rps": 2710.5,
+      "mbps": 277.56,
+      "lat_ms": {
+        "min": 3.5,
+        "avg": 11.703,
+        "p50": 11.492,
+        "p90": 12.824,
+        "p99": 15.953,
+        "max": 21.068
+      },
+      "workers": 1,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": false,
+      "all_rps": [
+        2689.4,
+        2710.5,
+        2716.5
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:57044/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     7.379 s\n  requests/sec   2710.5\n  transfer       2048.00 MB body (277.56 MB/s)\n\nlatency (ms)     min 3.500  avg 11.703  p50 11.492  p90 12.824  p99 15.953  max 21.068\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 6.095,
+      "rps": 3281.1,
+      "mbps": 335.99,
+      "lat_ms": {
+        "min": 0.265,
+        "avg": 9.554,
+        "p50": 0.288,
+        "p90": 0.356,
+        "p99": 440.856,
+        "max": 989.756
+      },
+      "workers": 1,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": true,
+      "all_rps": [
+        2983.2,
+        3281.1,
+        3296.4
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:56394/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     6.095 s\n  requests/sec   3281.1\n  transfer       2048.00 MB body (335.99 MB/s)\n\nlatency (ms)     min 0.265  avg 9.554  p50 0.288  p90 0.356  p99 440.856  max 989.756\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 3.966,
+      "rps": 5042.8,
+      "mbps": 5.16,
+      "lat_ms": {
+        "min": 2.133,
+        "avg": 6.223,
+        "p50": 5.984,
+        "p90": 7.304,
+        "p99": 9.727,
+        "max": 12.832
+      },
+      "workers": 2,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": false,
+      "all_rps": [
+        4972.0,
+        5042.8,
+        5209.2
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:53866/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     3.966 s\n  requests/sec   5042.8\n  transfer       20.48 MB body (5.16 MB/s)\n\nlatency (ms)     min 2.133  avg 6.223  p50 5.984  p90 7.304  p99 9.727  max 12.832\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 2.777,
+      "rps": 7200.9,
+      "mbps": 7.37,
+      "lat_ms": {
+        "min": 0.216,
+        "avg": 4.355,
+        "p50": 0.268,
+        "p90": 0.322,
+        "p99": 186.32,
+        "max": 428.464
+      },
+      "workers": 2,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": true,
+      "all_rps": [
+        7161.9,
+        7200.9,
+        7210.0
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:63317/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     2.777 s\n  requests/sec   7200.9\n  transfer       20.48 MB body (7.37 MB/s)\n\nlatency (ms)     min 0.216  avg 4.355  p50 0.268  p90 0.322  p99 186.320  max 428.464\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 4.721,
+      "rps": 4236.1,
+      "mbps": 433.78,
+      "lat_ms": {
+        "min": 4.664,
+        "avg": 7.436,
+        "p50": 7.285,
+        "p90": 8.453,
+        "p99": 10.504,
+        "max": 19.405
+      },
+      "workers": 2,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": false,
+      "all_rps": [
+        4167.0,
+        4236.1,
+        4281.4
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:60699/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     4.721 s\n  requests/sec   4236.1\n  transfer       2048.00 MB body (433.78 MB/s)\n\nlatency (ms)     min 4.664  avg 7.436  p50 7.285  p90 8.453  p99 10.504  max 19.405\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 3.489,
+      "rps": 5732.8,
+      "mbps": 587.03,
+      "lat_ms": {
+        "min": 0.274,
+        "avg": 5.468,
+        "p50": 0.329,
+        "p90": 0.426,
+        "p99": 236.072,
+        "max": 563.831
+      },
+      "workers": 2,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": true,
+      "all_rps": [
+        5372.3,
+        5732.8,
+        5797.3
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:49173/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     3.489 s\n  requests/sec   5732.8\n  transfer       2048.00 MB body (587.03 MB/s)\n\nlatency (ms)     min 0.274  avg 5.468  p50 0.329  p90 0.426  p99 236.072  max 563.831\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 3.655,
+      "rps": 5472.2,
+      "mbps": 5.6,
+      "lat_ms": {
+        "min": 0.726,
+        "avg": 5.676,
+        "p50": 5.447,
+        "p90": 6.882,
+        "p99": 9.199,
+        "max": 14.367
+      },
+      "workers": 4,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": false,
+      "all_rps": [
+        5276.9,
+        5472.2,
+        5745.0
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:63603/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     3.655 s\n  requests/sec   5472.2\n  transfer       20.48 MB body (5.60 MB/s)\n\nlatency (ms)     min 0.726  avg 5.676  p50 5.447  p90 6.882  p99 9.199  max 14.367\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 2.131,
+      "rps": 9386.8,
+      "mbps": 9.61,
+      "lat_ms": {
+        "min": 0.242,
+        "avg": 3.337,
+        "p50": 0.406,
+        "p90": 0.541,
+        "p99": 137.193,
+        "max": 311.444
+      },
+      "workers": 4,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": true,
+      "all_rps": [
+        9352.5,
+        9386.8,
+        9389.5
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:59503/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     2.131 s\n  requests/sec   9386.8\n  transfer       20.48 MB body (9.61 MB/s)\n\nlatency (ms)     min 0.242  avg 3.337  p50 0.406  p90 0.541  p99 137.193  max 311.444\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 4.143,
+      "rps": 4827.8,
+      "mbps": 494.36,
+      "lat_ms": {
+        "min": 1.007,
+        "avg": 6.452,
+        "p50": 6.284,
+        "p90": 7.623,
+        "p99": 9.32,
+        "max": 12.472
+      },
+      "workers": 4,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": false,
+      "all_rps": [
+        4804.2,
+        4827.8,
+        4907.1
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:54809/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     4.143 s\n  requests/sec   4827.8\n  transfer       2048.00 MB body (494.36 MB/s)\n\nlatency (ms)     min 1.007  avg 6.452  p50 6.284  p90 7.623  p99 9.320  max 12.472\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 2.631,
+      "rps": 7602.3,
+      "mbps": 778.48,
+      "lat_ms": {
+        "min": 0.323,
+        "avg": 4.129,
+        "p50": 0.5,
+        "p90": 0.657,
+        "p99": 164.022,
+        "max": 382.483
+      },
+      "workers": 4,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": true,
+      "all_rps": [
+        7566.2,
+        7602.3,
+        8446.3
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:57714/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     2.631 s\n  requests/sec   7602.3\n  transfer       2048.00 MB body (778.48 MB/s)\n\nlatency (ms)     min 0.323  avg 4.129  p50 0.500  p90 0.657  p99 164.022  max 382.483\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 3.386,
+      "rps": 5907.0,
+      "mbps": 6.05,
+      "lat_ms": {
+        "min": 0.621,
+        "avg": 5.165,
+        "p50": 5.077,
+        "p90": 6.056,
+        "p99": 7.217,
+        "max": 9.115
+      },
+      "workers": 8,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": false,
+      "all_rps": [
+        5822.0,
+        5907.0,
+        5963.7
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:51661/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     3.386 s\n  requests/sec   5907.0\n  transfer       20.48 MB body (6.05 MB/s)\n\nlatency (ms)     min 0.621  avg 5.165  p50 5.077  p90 6.056  p99 7.217  max 9.115\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 2.029,
+      "rps": 9858.8,
+      "mbps": 10.1,
+      "lat_ms": {
+        "min": 0.235,
+        "avg": 3.189,
+        "p50": 0.792,
+        "p90": 0.952,
+        "p99": 95.89,
+        "max": 280.196
+      },
+      "workers": 8,
+      "file": "small.html",
+      "size": 1024,
+      "keepalive": true,
+      "all_rps": [
+        9747.4,
+        9858.8,
+        10008.8
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:55875/small.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     2.029 s\n  requests/sec   9858.8\n  transfer       20.48 MB body (10.10 MB/s)\n\nlatency (ms)     min 0.235  avg 3.189  p50 0.792  p90 0.952  p99 95.890  max 280.196\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 20000.0,
+      "seconds": 3.632,
+      "rps": 5507.2,
+      "mbps": 563.94,
+      "lat_ms": {
+        "min": 0.834,
+        "avg": 5.546,
+        "p50": 5.387,
+        "p90": 6.637,
+        "p99": 8.677,
+        "max": 20.985
+      },
+      "workers": 8,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": false,
+      "all_rps": [
+        5477.8,
+        5507.2,
+        5538.9
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive off\ntarget:          http://127.0.0.1:56586/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    20000 opened\n  total time     3.632 s\n  requests/sec   5507.2\n  transfer       2048.00 MB body (563.94 MB/s)\n\nlatency (ms)     min 0.834  avg 5.546  p50 5.387  p90 6.637  p99 8.677  max 20.985\n"
+    },
+    {
+      "completed": 20000.0,
+      "failed": 0.0,
+      "non2xx": 0.0,
+      "connections": 224.0,
+      "seconds": 2.26,
+      "rps": 8850.1,
+      "mbps": 906.25,
+      "lat_ms": {
+        "min": 0.272,
+        "avg": 3.542,
+        "p50": 0.876,
+        "p90": 1.126,
+        "p99": 108.393,
+        "max": 287.999
+      },
+      "workers": 8,
+      "file": "large.html",
+      "size": 102400,
+      "keepalive": true,
+      "all_rps": [
+        8635.1,
+        8850.1,
+        8933.7
+      ],
+      "output": "tinyhttpd bench: 20000 requests, 32 connections, keep-alive on\ntarget:          http://127.0.0.1:57189/large.html\n\n  completed      20000\n  failed         0 (connect 0, io 0, parse 0)\n  non-2xx        0\n  connections    224 opened\n  total time     2.260 s\n  requests/sec   8850.1\n  transfer       2048.00 MB body (906.25 MB/s)\n\nlatency (ms)     min 0.272  avg 3.542  p50 0.876  p90 1.126  p99 108.393  max 287.999\n"
+    }
+  ]
+}

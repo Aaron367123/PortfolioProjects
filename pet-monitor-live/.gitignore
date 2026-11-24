@@ -1,0 +1,12 @@
+node_modules/
+data/
+*.db
+*.db-shm
+*.db-wal
+.env
+device/pet-monitor-spool.jsonl*
+device/.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
